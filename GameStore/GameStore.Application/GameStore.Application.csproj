@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DTOs\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj" />
       <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj" />
     </ItemGroup>

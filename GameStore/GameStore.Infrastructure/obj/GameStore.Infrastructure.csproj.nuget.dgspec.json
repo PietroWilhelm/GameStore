@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {}
+    "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
+    "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
+        "projectUniqueName": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
         "projectName": "GameStore.Infrastructure",
-        "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Billi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\obj\\",
+        "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\OpenTech_PS\\.nuget\\packages\\",
+        "outputPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Billi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\OpenTech_PS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Billi\\.dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Users\\OpenTech_PS\\.dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

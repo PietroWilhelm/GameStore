@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kiltdGQEMHE=",
+  "dgSpecHash": "NTIbByChloE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+  "projectFilePath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Billi\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
-    "C:\\Users\\Billi\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
   ],
   "logs": []
 }

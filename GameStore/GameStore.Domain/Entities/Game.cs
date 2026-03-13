@@ -3,7 +3,7 @@
 namespace GameStore.Domain.Entities;
 
 
-public class Game(string name, string description, DateTime launchdate, ContentTypeEnum contentTypeEnum) 
-    : Content(name, description, launchdate, contentTypeEnum)
+public class Game(string name, string description, DateTime launchDate, ContentTypeEnum contentTypeEnum) 
+    : Content(name, description, launchDate, contentTypeEnum)
 {
 }

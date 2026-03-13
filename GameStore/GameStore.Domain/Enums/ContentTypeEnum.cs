@@ -2,17 +2,17 @@
 
 public enum ContentTypeEnum
 {
-    Ação,
-    Aventura,
-    Estratégia,
+    action,
+    adventure,
+    estategy,
     RPG,
-    Simulação,
-    Esporte,
-    Corrida,
+    simulation,
+    esports,
+    running,
     Terror,
     Puzzle,
-    Sobrevivência,
-    Plataforma,
-    Luta,
-    Outros
+    survival,
+    platform,
+    fighting,
+    others
 }

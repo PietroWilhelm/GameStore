@@ -11,7 +11,7 @@ public abstract class Content : BaseEntity
 
     public ContentTypeEnum ContentType { get; private set; }
     
-    protected Content(string name, string description, DateTime launchDate,  ContentTypeEnum contentType = ContentTypeEnum.Outros)
+    protected Content(string name, string description, DateTime launchDate,  ContentTypeEnum contentType = ContentTypeEnum.others)
     {
         Name = name;
 
@@ -19,7 +19,7 @@ public abstract class Content : BaseEntity
         
         Description = description;
         
-        if (launchDate.Year < 1958) throw new Exception("Year must be greater than 1895");
+        if (launchDate.Year < 1958) throw new Exception("Year must be greater than 1958");
         
         LaunchDate = launchDate;
         
