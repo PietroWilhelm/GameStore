@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {}
+    "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {}
   },
   "projects": {
-    "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
+    "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
         "projectName": "GameStore.Domain",
-        "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
-        "packagesPath": "C:\\Users\\OpenTech_PS\\.nuget\\packages\\",
-        "outputPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
+        "packagesPath": "C:\\Users\\Billi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\OpenTech_PS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Billi\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\OpenTech_PS\\.dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Users\\Billi\\.dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

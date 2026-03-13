@@ -1,26 +1,61 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "GameStore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/GameStore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Domain.dll": {}
+        }
+      },
+      "GameStore.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/GameStore.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Infrastructure.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GameStore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../GameStore.Domain/GameStore.Domain.csproj",
+      "msbuildProject": "../GameStore.Domain/GameStore.Domain.csproj"
+    },
+    "GameStore.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../GameStore.Infrastructure/GameStore.Infrastructure.csproj",
+      "msbuildProject": "../GameStore.Infrastructure/GameStore.Infrastructure.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "GameStore.Domain >= 1.0.0",
+      "GameStore.Infrastructure >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\": {}
+    "C:\\Users\\Billi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj",
       "projectName": "GameStore.Application",
-      "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj",
-      "packagesPath": "C:\\Users\\OpenTech_PS\\.nuget\\packages\\",
-      "outputPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Application\\obj\\",
+      "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj",
+      "packagesPath": "C:\\Users\\Billi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\OpenTech_PS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Billi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -31,7 +66,14 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
+              "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
+            },
+            "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -65,7 +107,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\OpenTech_PS\\.dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Users\\Billi\\.dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

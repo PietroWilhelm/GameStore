@@ -36,6 +36,40 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "GameStore.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "GameStore.Domain": "1.0.0",
+          "GameStore.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GameStore.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Application.dll": {}
+        }
+      },
+      "GameStore.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/GameStore.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Domain.dll": {}
+        }
+      },
+      "GameStore.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/GameStore.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameStore.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -75,27 +109,45 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "GameStore.Application/1.0.0": {
+      "type": "project",
+      "path": "../GameStore.Application/GameStore.Application.csproj",
+      "msbuildProject": "../GameStore.Application/GameStore.Application.csproj"
+    },
+    "GameStore.Domain/1.0.0": {
+      "type": "project",
+      "path": "../GameStore.Domain/GameStore.Domain.csproj",
+      "msbuildProject": "../GameStore.Domain/GameStore.Domain.csproj"
+    },
+    "GameStore.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../GameStore.Infrastructure/GameStore.Infrastructure.csproj",
+      "msbuildProject": "../GameStore.Infrastructure/GameStore.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "GameStore.Application >= 1.0.0",
+      "GameStore.Domain >= 1.0.0",
+      "GameStore.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\": {}
+    "C:\\Users\\Billi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
       "projectName": "GameStore.Api",
-      "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
-      "packagesPath": "C:\\Users\\OpenTech_PS\\.nuget\\packages\\",
-      "outputPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\obj\\",
+      "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+      "packagesPath": "C:\\Users\\Billi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\OpenTech_PS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Billi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -106,7 +158,17 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj": {
+              "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj"
+            },
+            "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
+              "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
+            },
+            "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Billi\\Documents\\coding\\net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -149,7 +211,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\OpenTech_PS\\.dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Users\\Billi\\.dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
