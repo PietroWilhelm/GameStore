@@ -17,6 +17,4 @@ Studio 1 : N Game: Um Studio pode desenvolver múltiplos jogos, mas cada jogo é
 
 Game N : N Category: Um jogo pode pertencer a várias categorias, e uma categoria pode estar vinculada a diversos jogos (resolvido via tabela associativa).
 
-Customer 1 : 1 CustomerConfiguration: Cada cliente possui exatamente um perfil de configuração de sistema, garantindo a exclusividade das preferências.
-
 Customer 1 : N Order: Um cliente pode realizar vários pedidos ao longo do tempo.
