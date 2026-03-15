@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameStore.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42ac4ea329c618e3fc7d7222525c073b6030745f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2b08ff3f0c7796fb53c1f9900d1692be1a4d36a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameStore.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameStore.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

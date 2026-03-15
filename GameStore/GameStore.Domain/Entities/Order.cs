@@ -1,5 +1,15 @@
-﻿namespace GameStore.Domain.Entities;
+﻿using GameStore.Domain.Commom;
 
-public class Order(DateTime orderDate, decimal totalValue, string Email, int cpf )
+namespace GameStore.Domain.Entities;
+
+
+public class Order : BaseEntity
 {
+    public DateTime OrderDate { get; set; } 
+    public decimal TotalValue { get; set; } 
+
+    public Guid CustomerId { get; set; } 
+    
+    public Customer Customer { get; set; } 
+    
 }
