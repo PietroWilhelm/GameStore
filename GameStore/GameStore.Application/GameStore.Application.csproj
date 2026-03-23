@@ -11,4 +11,8 @@
       <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Services\" />
+    </ItemGroup>
+
 </Project>
