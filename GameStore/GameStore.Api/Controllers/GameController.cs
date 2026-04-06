@@ -17,15 +17,15 @@ namespace GameStore.Controllers;
 [ApiController]
 public class GameController : ControllerBase
 {
-    private readonly IGameService _gameService;
+    private readonly IGameRepository _gameRepository;
 
     /// <summary>
     /// Iniciliza o controller com o serviço de games
     /// </summary>
     /// <param name="gameservice">Implementação do serviço de game (injetado via DI).</param>
-    public GameController(IGameService gameservice)
+    public GameController(IGameRepository gameservice)
     {
-        _gameService = gameservice;
+        _gameRepository = gameservice;
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class GameController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var games = _gameService.GetAll();
+        var games = _gameRepository.GetAll();
         return new JsonResult(games);
     }
 
@@ -47,7 +47,7 @@ public class GameController : ControllerBase
     [HttpGet("{id:guid}")]
     public IActionResult GetbyId(Guid id)
     {
-        var game = _gameService.GetById(id);
+        var game = _gameRepository.GetById(id);
         if (game is null)
             return NotFound();
 
@@ -64,7 +64,7 @@ public class GameController : ControllerBase
     {
         try
         {
-            var game = _gameService.Create(request);
+            var game = _gameRepository.Create(request);
             return Ok(game);
         }
         catch (InvalidOperationException ex)
@@ -81,7 +81,7 @@ public class GameController : ControllerBase
     [HttpDelete("{id:guid}")]
     public IActionResult Delete(Guid id)
     {
-        if (!_gameService.Delete(id))
+        if (!_gameRepository.Delete(id))
             return NotFound();
 
         return NoContent();

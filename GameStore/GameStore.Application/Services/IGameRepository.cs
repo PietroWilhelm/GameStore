@@ -2,7 +2,7 @@
 
 namespace GameStore.Application.Services;
 
-public interface IGameService
+public interface IGameRepository
 {
     /// <summary>
     /// Retorna todos os Games cadastrados.

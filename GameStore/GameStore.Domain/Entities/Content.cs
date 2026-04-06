@@ -1,4 +1,5 @@
 ﻿using GameStore.Domain.Commom;
+using GameStore.Domain.Entities;
 using GameStore.Domain.Enum;
 
 public abstract class Content : BaseEntity
@@ -10,6 +11,13 @@ public abstract class Content : BaseEntity
     public DateTime LaunchDate { get; private set; }
 
     public ContentTypeEnum ContentType { get; private set; }
+
+    //N.N - Relacionamento
+    public List<Genre> Genres { get; set; } = [];
+    
+    protected Content()
+    {
+    }
     
     protected Content(string name, string description, DateTime launchDate,  ContentTypeEnum contentType = ContentTypeEnum.others)
     {

@@ -19,4 +19,9 @@ public class GameStoreContext : DbContext
     public DbSet<Order> Orders { get; set; }
     
     public DbSet<Studio> Studios { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameStoreContext).Assembly);
+    }
 }
