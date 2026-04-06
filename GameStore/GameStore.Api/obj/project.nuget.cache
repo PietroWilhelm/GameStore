@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ewAepQEHh5Q=",
+  "dgSpecHash": "tqRF0dt3zdU=",
   "success": true,
-  "projectFilePath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+  "projectFilePath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",

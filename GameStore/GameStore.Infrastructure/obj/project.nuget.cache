@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tfKh0y4nQWI=",
+  "dgSpecHash": "ejzouYG8/QE=",
   "success": true,
-  "projectFilePath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
+  "projectFilePath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.5\\microsoft.entityframeworkcore.10.0.5.nupkg.sha512",

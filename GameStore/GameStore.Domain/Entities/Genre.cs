@@ -8,6 +8,12 @@ public class Genre : BaseEntity
     
     public string Description { get; private set; }
 
+    public List<Content> Contents { get; private set; }
+
+    private Genre()
+    {
+    }
+    
     public Genre(string name, string description)
     {
         Name = name;

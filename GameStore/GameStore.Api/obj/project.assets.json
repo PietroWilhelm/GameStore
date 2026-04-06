@@ -661,11 +661,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+      "projectUniqueName": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
       "projectName": "GameStore.Api",
-      "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
+      "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Api\\GameStore.Api.csproj",
       "packagesPath": "C:\\Users\\OpenTech_PS\\.nuget\\packages\\",
-      "outputPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Api\\obj\\",
+      "outputPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\OpenTech_PS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -680,14 +680,14 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj": {
-              "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj"
+            "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj": {
+              "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj"
             },
-            "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
-              "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
+            "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
+              "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
             },
-            "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
-              "projectPath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj"
+            "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
+              "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj"
             }
           }
         }
@@ -702,7 +702,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
@@ -732,7 +732,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\OpenTech_PS\\.dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

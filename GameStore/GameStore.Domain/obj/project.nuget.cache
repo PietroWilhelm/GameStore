@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fPj+ZfLK9JE=",
+  "dgSpecHash": "RO1F3XT6agE=",
   "success": true,
-  "projectFilePath": "G:\\2TDSPG\\advanced-businesss-developmenter-with-net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
+  "projectFilePath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
   ],
