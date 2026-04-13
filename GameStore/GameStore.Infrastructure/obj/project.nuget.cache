@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kEwSMiHbwx8=",
+  "dgSpecHash": "focfi7jXDak=",
   "success": true,
   "projectFilePath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.0\\microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.entityframeworkcore.design\\10.0.0\\microsoft.entityframeworkcore.design.10.0.0.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.0\\microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512",
+    "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\10.0.0\\microsoft.entityframeworkcore.tools.10.0.0.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.0\\microsoft.extensions.caching.abstractions.10.0.0.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.0\\microsoft.extensions.caching.memory.10.0.0.nupkg.sha512",
     "C:\\Users\\OpenTech_PS\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.0\\microsoft.extensions.configuration.abstractions.10.0.0.nupkg.sha512",
