@@ -10,6 +10,7 @@ public class GameStoreContext : DbContext
         
     }
     
+    public DbSet<Content> Contents { get; set; }
     public DbSet<Game> Games { get; set; }
 
     public DbSet<Genre> Genres { get; set; }
@@ -19,6 +20,8 @@ public class GameStoreContext : DbContext
     public DbSet<Order> Orders { get; set; }
     
     public DbSet<Studio> Studios { get; set; }
+    
+    public DbSet<CustomerConfiguration> CustomerConfigurations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
