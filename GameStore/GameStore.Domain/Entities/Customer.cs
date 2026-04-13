@@ -16,6 +16,10 @@ public class Customer : BaseEntity
     //1..1
     public CustomerConfiguration Configuration { get; set; }
 
+    private Customer()
+    {
+    }
+
     public Customer(string name, string email, DateOnly dateBorn, string rawPassword, int cpf)
     {
         UpdateName(name);

@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GameStore.Infrastructure.Configurations;
+namespace GameStore.Infrastructure.Persistence.Configurations;
 
 /// <summary>
-/// Configuração da EF para hierarquia content (Game, Studio)
+/// Configuração da EF para a entidade base Content.
 /// </summary>
 public class ContentConfiguration : IEntityTypeConfiguration<Content>
 {
@@ -26,13 +26,6 @@ public class ContentConfiguration : IEntityTypeConfiguration<Content>
         builder.Property(c => c.LaunchDate)
             .IsRequired();
 
-        builder.HasDiscriminator<string>("Type")
-            .HasValue<Game>("Game")
-            .HasValue<Studio>("Studio");
-           
-
-        builder.Property("Type")
-            .HasMaxLength(20);
 
         // N:N com Genre
        builder.HasMany(c => c.Genres)
