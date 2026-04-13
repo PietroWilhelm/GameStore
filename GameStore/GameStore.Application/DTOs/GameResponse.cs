@@ -1,5 +1,5 @@
 ﻿using GameStore.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+namespace GameStore.Application.DTOs;
 
 /// <summary
 /// DTO de resposta para Game

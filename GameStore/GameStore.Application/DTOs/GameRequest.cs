@@ -15,6 +15,7 @@ public record GameRequest(
     string Name,
     string Description,
     DateTime launchDate,
+    Guid StudioId,
     
     [property:Required(ErrorMessage = "O tipo de conteúdo é obrigatório")]
     [property:EnumDataType(typeof(ContentTypeEnum), ErrorMessage = "O tipo de conteúdo invalido")]
@@ -27,5 +28,6 @@ public record GameRequest(
         Name, 
         Description,
         launchDate,
-        contentTypeEnum);
+        contentTypeEnum,
+        StudioId);
 }

@@ -245,8 +245,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "GameStore.Domain": "1.0.0",
-          "GameStore.Infrastructure": "1.0.0"
+          "GameStore.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/GameStore.Application.dll": {}
@@ -272,6 +271,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "GameStore.Application": "1.0.0",
           "GameStore.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "10.0.5",
           "Oracle.EntityFrameworkCore": "10.23.26100"

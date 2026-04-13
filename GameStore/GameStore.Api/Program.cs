@@ -1,3 +1,5 @@
+using GameStore.Application.Services;
+using GameStore.Infrastructure;
 using GameStore.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +13,14 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<GameStoreContext>(options =>
 {
-    options.UseOracle(builder.Configuration.GetConnectionString("RecommendaOracle"));
+    options.UseOracle(builder.Configuration.GetConnectionString("GameStoreOracle"));
 });
+
+builder.Services.AddScoped<IGameRepository, GameRepository>();
+
+
+builder.Services.AddControllers();
+
 
 var app = builder.Build();
 

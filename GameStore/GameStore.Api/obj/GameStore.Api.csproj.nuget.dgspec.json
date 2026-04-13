@@ -520,9 +520,6 @@
             "projectReferences": {
               "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
                 "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
-              },
-              "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj": {
-                "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Infrastructure\\GameStore.Infrastructure.csproj"
               }
             }
           }
@@ -1197,6 +1194,9 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
+              "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj": {
+                "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Application\\GameStore.Application.csproj"
+              },
               "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj": {
                 "projectPath": "E:\\2TDSPG\\Developement with .net\\GameStore\\GameStore\\GameStore.Domain\\GameStore.Domain.csproj"
               }
