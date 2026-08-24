@@ -17,6 +17,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Oracle.ManagedDataAccess.EntityFramework" Version="23.26.200" />
     </ItemGroup>
 
     <ItemGroup>
