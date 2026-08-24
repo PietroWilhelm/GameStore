@@ -5,7 +5,7 @@ Pietro Paranhos Wilhelm Rm561378
 
 João Vitor Biribilli Ravelli Rm565594
 
-Pedro de Matos Previtali Rm564184
+Gabriel Neris Losano Rm564093 
 
 ## 🗂️ Entidades Modeladas
 Content: Classe base que contém atributos comuns como Nome, Descrição e Data de Lançamento.
