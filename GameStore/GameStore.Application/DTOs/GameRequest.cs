@@ -11,23 +11,33 @@ namespace GameStore.Application.DTOs;
 /// <param name="Description">Descrição do jogo.</param>
 /// <param name="launchDate">Data de lançamento.</param>
 /// <param name="contentTypeEnum">Tipo do conteúdo.</param>
+using System.ComponentModel.DataAnnotations;
+
 public record GameRequest(
+    [Required(ErrorMessage = "O nome do jogo é obrigatório")]
+    [StringLength(200, MinimumLength = 2, ErrorMessage = "O nome do jogo deve ter entre 2 e 200 caracteres")]
     string Name,
+
+    [Required(ErrorMessage = "A descrição é obrigatória")]
+    [StringLength(1000, MinimumLength = 10, ErrorMessage = "A descrição deve ter entre 10 e 1000 caracteres")]
     string Description,
-    DateTime launchDate,
+
+    [Required(ErrorMessage = "A data de lançamento é obrigatória")]
+    [Range(typeof(DateTime), "1958-01-01", "2100-12-31", ErrorMessage = "A data de lançamento deve estar entre 1958 e 2100")]
+    DateTime LaunchDate,
+
+    [Required(ErrorMessage = "O StudioId é obrigatório")]
     Guid StudioId,
-    
-    [property:Required(ErrorMessage = "O tipo de conteúdo é obrigatório")]
-    [property:EnumDataType(typeof(ContentTypeEnum), ErrorMessage = "O tipo de conteúdo invalido")]
-    ContentTypeEnum contentTypeEnum
-    ) : ContentRequest (Name, Description, launchDate)
+
+    [Required(ErrorMessage = "O tipo de conteúdo é obrigatório")]
+    [EnumDataType(typeof(ContentTypeEnum), ErrorMessage = "O tipo de conteúdo inválido")]
+    ContentTypeEnum ContentTypeEnum
+) : ContentRequest(Name, Description, LaunchDate)
 {
-    // poderia ser feito via autoMapper, conteudo ele e pago entao como feito em sala, vai ser na mao
-    
     public Game toDomain() => new Game(
-        Name, 
-        Description,
-        launchDate,
-        contentTypeEnum,
-        StudioId);
+       Name,
+       Description,
+       LaunchDate,
+       ContentTypeEnum,
+       StudioId);
 }

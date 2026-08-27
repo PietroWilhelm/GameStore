@@ -25,6 +25,22 @@ public class GameStoreContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Map CLR bool Active to NUMBER(1) in Oracle to avoid PL/SQL type mismatches when triggers exist on tables.
+        // Convert: true -> 1, false -> 0
+        var boolToIntConverter = new Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter<bool, int>(
+            v => v ? 1 : 0,
+            v => v == 1);
+
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            var activeProperty = entityType.FindProperty("Active");
+            if (activeProperty != null && activeProperty.ClrType == typeof(bool))
+            {
+                activeProperty.SetValueConverter(boolToIntConverter);
+                activeProperty.SetColumnType("NUMBER(1)");
+            }
+        }
+
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameStoreContext).Assembly);
     }
 }

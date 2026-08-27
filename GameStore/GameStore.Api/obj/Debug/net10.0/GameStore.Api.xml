@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameStore.Api</name>
+    </assembly>
+    <members>
+        <member name="T:GameStore.Controllers.CustomerController">
+            <summary>
+            Gerencia os clientes cadastrados na loja.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.CustomerController.#ctor(GameStore.Application.Repositories.ICustomerRepository)">
+            <summary>
+            Gerencia os clientes cadastrados na loja.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.CustomerController.GetAll">
+            <summary>
+            Lista todos os clientes.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.CustomerController.GetById(System.Guid)">
+            <summary>
+            Busca um cliente pelo identificador.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.CustomerController.Create(GameStore.Application.DTOs.CustomerRequest)">
+            <summary>
+            Cria um novo cliente.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.CustomerController.Delete(System.Guid)">
+            <summary>
+            Remove um cliente pelo identificador.
+            </summary>
+        </member>
+        <member name="T:GameStore.Controllers.GameController">
+            <summary>
+            Controller responsável pelas operações de Games na API.
+            Expõe endpoints para criar, ler, atualizar e deletar jogos, bem como para listar jogos por categoria, buscar jogos por nome e obter detalhes de um jogo específico.
+            </summary>
+            <remarks>
+            Base URL: /api/game
+            Exemplo: http://:localhost:5283/api/game
+            </remarks>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.#ctor(GameStore.Application.Services.IGameRepository)">
+            <summary>
+            Iniciliza o controller com o serviço de games
+            </summary>
+            <param name="gameservice">Implementação do serviço de game (injetado via DI).</param>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.GetAll">
+            <summary>
+            Listando todos os games cadastrados
+            </summary>
+            <returns>Lista de games</returns>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.GetbyId(System.Guid)">
+            <summary>
+            Busca um game pelo identificador único.
+            </summary>
+            <param name="id">Identificador único do game.</param>
+            <returns>O game encontrado ou 404 se não existir.</returns>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.Create(GameStore.Application.DTOs.GameRequest)">
+            <summary>
+            Cria um novo game.
+            </summary>
+            <param name="request">Dados do game a ser criado.</param>
+            <returns>O game criado ou 400 se o nome já existir.</returns>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.Delete(System.Guid)">
+            <summary>
+            Remove um game pelo identificador único.
+            </summary>
+            <param name="id">Identificador único do game.</param>
+            <returns>204 se removido com sucesso ou 404 se não encontrado.</returns>
+        </member>
+        <member name="T:GameStore.Controllers.GenreController">
+            <summary>
+            Gerencia os gêneros dos jogos disponíveis no catálogo.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GenreController.#ctor(GameStore.Application.Repositories.IGenreRepository)">
+            <summary>
+            Gerencia os gêneros dos jogos disponíveis no catálogo.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GenreController.GetAll">
+            <summary>
+            Lista todos os gêneros cadastrados.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GenreController.GetById(System.Guid)">
+            <summary>
+            Busca um gênero pelo identificador.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GenreController.Create(GameStore.Application.DTOs.GenreRequest)">
+            <summary>
+            Cria um novo gênero.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GenreController.Delete(System.Guid)">
+            <summary>
+            Remove um gênero pelo identificador.
+            </summary>
+        </member>
+        <member name="T:GameStore.Controllers.OrderController">
+            <summary>
+            Gerencia os pedidos realizados pelos clientes.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.#ctor(GameStore.Application.Repositories.IOrderRepository)">
+            <summary>
+            Gerencia os pedidos realizados pelos clientes.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.GetAll">
+            <summary>
+            Lista todos os pedidos.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.GetByCustomer(System.Guid)">
+            <summary>
+            Lista os pedidos de um cliente específico.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.GetById(System.Guid)">
+            <summary>
+            Busca um pedido pelo identificador.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.Create(GameStore.Application.DTOs.OrderRequest)">
+            <summary>
+            Cria um novo pedido.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.OrderController.Delete(System.Guid)">
+            <summary>
+            Remove um pedido pelo identificador.
+            </summary>
+        </member>
+        <member name="T:GameStore.Controllers.StudioController">
+            <summary>
+            Gerencia as desenvolvedoras de jogos cadastradas no sistema.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.StudioController.#ctor(GameStore.Application.Repositories.IStudioRepository)">
+            <summary>
+            Gerencia as desenvolvedoras de jogos cadastradas no sistema.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.StudioController.GetAll">
+            <summary>
+            Lista todas as desenvolvedoras cadastradas.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.StudioController.GetById(System.Guid)">
+            <summary>
+            Busca uma desenvolvedora pelo identificador.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.StudioController.Create(GameStore.Application.DTOs.StudioRequest)">
+            <summary>
+            Cria uma nova desenvolvedora.
+            </summary>
+        </member>
+        <member name="M:GameStore.Controllers.StudioController.Delete(System.Guid)">
+            <summary>
+            Remove uma desenvolvedora pelo identificador.
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

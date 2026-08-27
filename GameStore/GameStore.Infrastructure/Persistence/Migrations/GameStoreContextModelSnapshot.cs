@@ -17,7 +17,7 @@ namespace GameStore.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.0")
+                .HasAnnotation("ProductVersion", "10.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -28,8 +28,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<int>("ContentType")
                         .HasColumnType("NUMBER(10)");
@@ -78,8 +78,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -128,8 +128,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP(7)");
@@ -163,8 +163,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP(7)");
@@ -190,8 +190,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP(7)");
@@ -219,8 +219,8 @@ namespace GameStore.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("Active")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TIMESTAMP(7)");

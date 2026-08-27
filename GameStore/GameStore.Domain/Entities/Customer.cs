@@ -20,13 +20,13 @@ public class Customer : BaseEntity
     {
     }
 
-    public Customer(string name, string email, DateOnly dateBorn, string rawPassword, int cpf)
+    public Customer(string name, string email, DateOnly dateBorn, string rawPassword, string cpf)
     {
         UpdateName(name);
         UpdateEmail(email);
         SetBirthDate(dateBorn);
         ChangePassword(rawPassword);
-        
+        Cpf = cpf;
     }
     
     public void UpdateName(string newName)

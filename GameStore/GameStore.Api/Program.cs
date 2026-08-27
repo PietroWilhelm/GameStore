@@ -1,39 +1,48 @@
-using GameStore.Application.Services;
-using GameStore.Infrastructure;
+using GameStore.API.Extensions;
 using GameStore.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddGameStoreDbContext(builder.Configuration, builder.Environment);
+builder.Services.AddGameStoreRepositories();
+builder.Services.AddGameStoreApplicationServices();
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(
+            new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
-builder.Services.AddDbContext<GameStoreContext>(options =>
+builder.Services.AddRouting(options =>
 {
-    options.UseOracle(builder.Configuration.GetConnectionString("GameStoreOracle"));
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
 });
 
-builder.Services.AddScoped<IGameRepository, GameRepository>();
-
-
-builder.Services.AddControllers();
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddGameStoreSwagger(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
+    db.Database.Migrate();
+}
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "GameStore API v1");
+        options.RoutePrefix = "";
+    });
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
