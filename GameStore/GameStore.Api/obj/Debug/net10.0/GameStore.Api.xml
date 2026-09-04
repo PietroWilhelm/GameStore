@@ -9,7 +9,7 @@
             Gerencia os clientes cadastrados na loja.
             </summary>
         </member>
-        <member name="M:GameStore.Controllers.CustomerController.#ctor(GameStore.Application.Repositories.ICustomerRepository)">
+        <member name="M:GameStore.Controllers.CustomerController.#ctor(GameStore.Application.Services.Interfaces.ICustomerService)">
             <summary>
             Gerencia os clientes cadastrados na loja.
             </summary>
@@ -37,52 +37,42 @@
         <member name="T:GameStore.Controllers.GameController">
             <summary>
             Controller responsável pelas operações de Games na API.
-            Expõe endpoints para criar, ler, atualizar e deletar jogos, bem como para listar jogos por categoria, buscar jogos por nome e obter detalhes de um jogo específico.
             </summary>
-            <remarks>
-            Base URL: /api/game
-            Exemplo: http://:localhost:5283/api/game
-            </remarks>
         </member>
-        <member name="M:GameStore.Controllers.GameController.#ctor(GameStore.Application.Services.IGameRepository)">
+        <member name="M:GameStore.Controllers.GameController.#ctor(GameStore.Application.Services.Interfaces.IGameService,Microsoft.Extensions.Logging.ILogger{GameStore.Controllers.GameController})">
             <summary>
-            Iniciliza o controller com o serviço de games
+            Controller responsável pelas operações de Games na API.
             </summary>
-            <param name="gameservice">Implementação do serviço de game (injetado via DI).</param>
         </member>
         <member name="M:GameStore.Controllers.GameController.GetAll">
             <summary>
-            Listando todos os games cadastrados
+            Lista todos os games cadastrados.
             </summary>
-            <returns>Lista de games</returns>
         </member>
-        <member name="M:GameStore.Controllers.GameController.GetbyId(System.Guid)">
+        <member name="M:GameStore.Controllers.GameController.GetById(System.Guid)">
             <summary>
             Busca um game pelo identificador único.
             </summary>
             <param name="id">Identificador único do game.</param>
-            <returns>O game encontrado ou 404 se não existir.</returns>
         </member>
         <member name="M:GameStore.Controllers.GameController.Create(GameStore.Application.DTOs.GameRequest)">
             <summary>
             Cria um novo game.
             </summary>
             <param name="request">Dados do game a ser criado.</param>
-            <returns>O game criado ou 400 se o nome já existir.</returns>
         </member>
         <member name="M:GameStore.Controllers.GameController.Delete(System.Guid)">
             <summary>
             Remove um game pelo identificador único.
             </summary>
             <param name="id">Identificador único do game.</param>
-            <returns>204 se removido com sucesso ou 404 se não encontrado.</returns>
         </member>
         <member name="T:GameStore.Controllers.GenreController">
             <summary>
             Gerencia os gêneros dos jogos disponíveis no catálogo.
             </summary>
         </member>
-        <member name="M:GameStore.Controllers.GenreController.#ctor(GameStore.Application.Repositories.IGenreRepository)">
+        <member name="M:GameStore.Controllers.GenreController.#ctor(GameStore.Application.Services.Interfaces.IGenreService)">
             <summary>
             Gerencia os gêneros dos jogos disponíveis no catálogo.
             </summary>
@@ -112,7 +102,7 @@
             Gerencia os pedidos realizados pelos clientes.
             </summary>
         </member>
-        <member name="M:GameStore.Controllers.OrderController.#ctor(GameStore.Application.Repositories.IOrderRepository)">
+        <member name="M:GameStore.Controllers.OrderController.#ctor(GameStore.Application.Services.Interfaces.IOrderService)">
             <summary>
             Gerencia os pedidos realizados pelos clientes.
             </summary>
@@ -147,7 +137,7 @@
             Gerencia as desenvolvedoras de jogos cadastradas no sistema.
             </summary>
         </member>
-        <member name="M:GameStore.Controllers.StudioController.#ctor(GameStore.Application.Repositories.IStudioRepository)">
+        <member name="M:GameStore.Controllers.StudioController.#ctor(GameStore.Application.Services.Interfaces.IStudioService)">
             <summary>
             Gerencia as desenvolvedoras de jogos cadastradas no sistema.
             </summary>
@@ -170,6 +160,69 @@
         <member name="M:GameStore.Controllers.StudioController.Delete(System.Guid)">
             <summary>
             Remove uma desenvolvedora pelo identificador.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Exceptions.GlobalExceptionHandler">
+            <summary>
+            Converte qualquer exceção não tratada em uma resposta <c>application/problem+json</c> consistente,
+            evitando <c>try/catch</c> espalhado pelos controllers.
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Exceptions.GlobalExceptionHandler.#ctor(Microsoft.Extensions.Logging.ILogger{GameStore.API.Exceptions.GlobalExceptionHandler},Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+            Converte qualquer exceção não tratada em uma resposta <c>application/problem+json</c> consistente,
+            evitando <c>try/catch</c> espalhado pelos controllers.
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Extensions.GameStoreServiceCollectionExtensions.AddGameStoreRepositories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registra todas as implementações de repositório como <c>Scoped</c> (um por requisição HTTP).
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Extensions.GameStoreServiceCollectionExtensions.AddGameStoreApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registra os serviços de aplicação que orquestram os repositórios.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Extensions.HealthCheckServiceCollectionExtensions">
+            <summary>
+            Registra os health checks da API, mantendo o <c>Program.cs</c> enxuto.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Health.FiapSiteHealthCheck">
+            <summary>
+            Check de dependência externa (recomendado pelo enunciado do CP4): verifica se o site
+            da FIAP está respondendo. Uma falha aqui derruba o status agregado de <c>/health</c>
+            para <see cref="F:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy"/>, evidenciando o impacto de uma dependência
+            externa indisponível no relatório completo.
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Health.FiapSiteHealthCheck.#ctor(System.Net.Http.IHttpClientFactory)">
+            <summary>
+            Check de dependência externa (recomendado pelo enunciado do CP4): verifica se o site
+            da FIAP está respondendo. Uma falha aqui derruba o status agregado de <c>/health</c>
+            para <see cref="F:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy"/>, evidenciando o impacto de uma dependência
+            externa indisponível no relatório completo.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Health.GameStoreDbHealthCheck">
+            <summary>
+            Verifica se o banco Oracle configurado está acessível, sem depender de um pacote
+            de health check específico de provider.
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Health.GameStoreDbHealthCheck.#ctor(GameStore.Infrastructure.Persistence.GameStoreContext)">
+            <summary>
+            Verifica se o banco Oracle configurado está acessível, sem depender de um pacote
+            de health check específico de provider.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Health.HealthCheckResponseWriter">
+            <summary>
+            Serializa o <see cref="T:Microsoft.Extensions.Diagnostics.HealthChecks.HealthReport"/> em um JSON legível, tanto por humanos quanto
+            por ferramentas de monitoramento: status geral, duração total e a lista de checks
+            (nome, status e duração de cada um). O detalhe da exceção só é incluído em
+            Development, para não vazar stack trace em produção.
             </summary>
         </member>
         <member name="T:Program">

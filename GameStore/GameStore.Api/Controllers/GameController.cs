@@ -1,89 +1,72 @@
-﻿using GameStore.Application.DTOs;
-using GameStore.Application.Services;
+using GameStore.Application.DTOs;
+using GameStore.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.Controllers;
 
 /// <summary>
 /// Controller responsável pelas operações de Games na API.
-/// Expõe endpoints para criar, ler, atualizar e deletar jogos, bem como para listar jogos por categoria, buscar jogos por nome e obter detalhes de um jogo específico.
 /// </summary>
-/// <remarks>
-/// Base URL: /api/game
-/// Exemplo: http://:localhost:5283/api/game
-/// </remarks>
-
 [Route("api/[controller]")]
 [ApiController]
-public class GameController : ControllerBase
+[Produces("application/json")]
+public class GameController(IGameService gameService, ILogger<GameController> logger) : ControllerBase
 {
-    private readonly IGameRepository _gameRepository;
-
     /// <summary>
-    /// Iniciliza o controller com o serviço de games
+    /// Lista todos os games cadastrados.
     /// </summary>
-    /// <param name="gameservice">Implementação do serviço de game (injetado via DI).</param>
-    public GameController(IGameRepository gameservice)
-    {
-        _gameRepository = gameservice;
-    }
-
-    /// <summary>
-    /// Listando todos os games cadastrados
-    /// </summary>
-    /// <returns>Lista de games</returns>
     [HttpGet]
+    [ProducesResponseType(typeof(IReadOnlyList<GameResponse>), StatusCodes.Status200OK)]
     public IActionResult GetAll()
-    {
-        var games = _gameRepository.GetAll();
-        return new JsonResult(games);
-    }
+        => Ok(gameService.GetAll());
 
     /// <summary>
     /// Busca um game pelo identificador único.
     /// </summary>
     /// <param name="id">Identificador único do game.</param>
-    /// <returns>O game encontrado ou 404 se não existir.</returns>
     [HttpGet("{id:guid}")]
-    public IActionResult GetbyId(Guid id)
+    [ProducesResponseType(typeof(GameResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public IActionResult GetById(Guid id)
     {
-        var game = _gameRepository.GetById(id);
-        if (game is null)
-            return NotFound();
-
-        return Ok(game);
+        var game = gameService.GetById(id);
+        return game is null ? NotFound() : Ok(game);
     }
 
     /// <summary>
     /// Cria um novo game.
     /// </summary>
     /// <param name="request">Dados do game a ser criado.</param>
-    /// <returns>O game criado ou 400 se o nome já existir.</returns>
     [HttpPost]
+    [ProducesResponseType(typeof(GameResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult Create([FromBody] GameRequest request)
     {
-        try
-        {
-            var game = _gameRepository.Create(request);
-            return Ok(game);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        if (!ModelState.IsValid)
+            return ValidationProblem(ModelState);
+
+        var traceId = HttpContext.TraceIdentifier;
+
+        logger.LogInformation(
+            "Iniciando criação de game. Nome: {GameName}, StudioId: {StudioId}, TraceId: {TraceId}",
+            request.Name, request.StudioId, traceId);
+
+        var created = gameService.Create(request);
+
+        logger.LogInformation(
+            "Game criado com sucesso. GameId: {GameId}, Nome: {GameName}, TraceId: {TraceId}",
+            created.Id, created.Name, traceId);
+
+        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
     /// <summary>
     /// Remove um game pelo identificador único.
     /// </summary>
     /// <param name="id">Identificador único do game.</param>
-    /// <returns>204 se removido com sucesso ou 404 se não encontrado.</returns>
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Delete(Guid id)
-    {
-        if (!_gameRepository.Delete(id))
-            return NotFound();
-
-        return NoContent();
-    }
+        => gameService.Delete(id) ? NoContent() : NotFound();
 }

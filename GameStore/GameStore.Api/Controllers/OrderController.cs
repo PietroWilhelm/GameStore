@@ -1,6 +1,5 @@
 using GameStore.Application.DTOs;
-using GameStore.Application.Repositories;
-using GameStore.Domain.Entities;
+using GameStore.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.Controllers;
@@ -10,33 +9,34 @@ namespace GameStore.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class OrderController(IOrderRepository orderRepository) : ControllerBase
+[Produces("application/json")]
+public class OrderController(IOrderService orderService) : ControllerBase
 {
     /// <summary>
     /// Lista todos os pedidos.
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<Order>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IReadOnlyList<OrderResponse>), StatusCodes.Status200OK)]
     public IActionResult GetAll()
-        => Ok(orderRepository.GetAll());
+        => Ok(orderService.GetAll());
 
     /// <summary>
     /// Lista os pedidos de um cliente específico.
     /// </summary>
     [HttpGet("customers/{customerId:guid}")]
-    [ProducesResponseType(typeof(IEnumerable<Order>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IReadOnlyList<OrderResponse>), StatusCodes.Status200OK)]
     public IActionResult GetByCustomer(Guid customerId)
-        => Ok(orderRepository.GetByCustomer(customerId));
+        => Ok(orderService.GetByCustomer(customerId));
 
     /// <summary>
     /// Busca um pedido pelo identificador.
     /// </summary>
     [HttpGet("{id:guid}")]
-    [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult GetById(Guid id)
     {
-        var order = orderRepository.GetById(id);
+        var order = orderService.GetById(id);
         return order is null ? NotFound() : Ok(order);
     }
 
@@ -44,18 +44,15 @@ public class OrderController(IOrderRepository orderRepository) : ControllerBase
     /// Cria um novo pedido.
     /// </summary>
     [HttpPost]
-    [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult Create([FromBody] OrderRequest request)
     {
-        var order = new Order
-        {
-            CustomerId = request.CustomerId,
-            TotalValue = request.TotalValue,
-            OrderDate = request.OrderDate,
-        };
+        if (!ModelState.IsValid)
+            return ValidationProblem(ModelState);
 
-        return Ok(orderRepository.Add(order));
+        var created = orderService.Create(request);
+        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
     /// <summary>
@@ -65,5 +62,5 @@ public class OrderController(IOrderRepository orderRepository) : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Delete(Guid id)
-        => orderRepository.Delete(id) ? NoContent() : NotFound();
+        => orderService.Delete(id) ? NoContent() : NotFound();
 }

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Api", "GameStore.Api\GameStore.Api.csproj", "{36560CEB-7C6E-4F94-ABC8-B8413FF15D2C}"
 EndProject
@@ -11,6 +11,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Infrastructure", "GameStore.Infrastructure\GameStore.Infrastructure.csproj", "{9CB2E051-8991-4D41-A750-8A75E409B99F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Application", "GameStore.Application\GameStore.Application.csproj", "{A6B41FC6-B3FE-4EA4-A9D3-E66E575B74A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Domain.Tests", "GameStore.Domain.Tests\GameStore.Domain.Tests.csproj", "{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Application.Tests", "GameStore.Application.Tests\GameStore.Application.Tests.csproj", "{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,11 +38,24 @@ Global
 		{A6B41FC6-B3FE-4EA4-A9D3-E66E575B74A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6B41FC6-B3FE-4EA4-A9D3-E66E575B74A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6B41FC6-B3FE-4EA4-A9D3-E66E575B74A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36560CEB-7C6E-4F94-ABC8-B8413FF15D2C} = {1545FA9F-A1B3-4E7F-8BD3-66C75DF72E2F}
 		{5B70D04D-1C0B-4CD4-A268-FB228781CCA4} = {1545FA9F-A1B3-4E7F-8BD3-66C75DF72E2F}
 		{9CB2E051-8991-4D41-A750-8A75E409B99F} = {1545FA9F-A1B3-4E7F-8BD3-66C75DF72E2F}
 		{A6B41FC6-B3FE-4EA4-A9D3-E66E575B74A5} = {1545FA9F-A1B3-4E7F-8BD3-66C75DF72E2F}
+		{FBBDD7E0-46A1-4957-858F-A6BE455F9E8D} = {74FEAE48-3C16-4EEF-83FD-463DC2635DE7}
+		{FEE5B96E-AD9C-4EEB-99C3-5B4BE71A7A43} = {74FEAE48-3C16-4EEF-83FD-463DC2635DE7}
 	EndGlobalSection
 EndGlobal

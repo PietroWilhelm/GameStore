@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GameStore.Infrastructure.Configurations;
+namespace GameStore.Infrastructure.Persistence.Configurations;
 
 /// <summary>
 /// Configuração EF para a entidade UserConfiguration.

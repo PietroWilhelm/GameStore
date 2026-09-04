@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GameStore.Infrastructure.Configurations;
+namespace GameStore.Infrastructure.Persistence.Configurations;
 
 public class GenreConfiguration : IEntityTypeConfiguration<Genre>
 {

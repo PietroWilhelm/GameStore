@@ -1,4 +1,4 @@
-﻿using GameStore.Domain.Enum;
+﻿using GameStore.Domain.Enums;
 
 namespace GameStore.Domain.Entities;
 

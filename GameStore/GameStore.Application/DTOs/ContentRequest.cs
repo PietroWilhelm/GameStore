@@ -1,14 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace GameStore.Application.DTOs;
+
 /// <summary>
 /// DTO base de requisição para conteúdo (filme, série, etc.).
 /// </summary>
-/// <param name="name">Título do conteúdo.</param>
-/// <param name="description">Descrição do conteúdo.</param>
-/// <param name="launchDate">Data de lançamento.</param>
-using System.ComponentModel.DataAnnotations;
-
+/// <param name="Name">Título do conteúdo.</param>
+/// <param name="Description">Descrição do conteúdo.</param>
+/// <param name="LaunchDate">Data de lançamento.</param>
 public abstract record ContentRequest(
     [Required(ErrorMessage = "O título é obrigatório")]
     [StringLength(200, MinimumLength = 2, ErrorMessage = "O título deve ter entre 2 e 200 caracteres")]

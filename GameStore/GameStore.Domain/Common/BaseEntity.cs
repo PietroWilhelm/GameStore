@@ -1,4 +1,4 @@
-﻿namespace GameStore.Domain.Commom;
+﻿namespace GameStore.Domain.Common;
 
 public abstract class BaseEntity
 {

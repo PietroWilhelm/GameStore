@@ -12,7 +12,7 @@ public class ContentConfiguration : IEntityTypeConfiguration<Content>
     public void Configure(EntityTypeBuilder<Content> builder)
     {
         builder.ToTable("PG_Content");
-        
+
         builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Name)
@@ -28,18 +28,23 @@ public class ContentConfiguration : IEntityTypeConfiguration<Content>
 
 
         // N:N com Genre
-       builder.HasMany(c => c.Genres)
-           .WithMany(g => g.Contents)
-           .UsingEntity(j => j.ToTable("ContentGenres"));
+        builder.HasMany(c => c.Genres)
+            .WithMany(g => g.Contents)
+            .UsingEntity(j => j.ToTable("ContentGenres"));
 
         // 1:N Ratings
         //builder.HasMany(c => c.Ratings)
         //    .WithOne()
         //    .HasForeignKey(r => r.ContentId)
         //    .OnDelete(DeleteBehavior.Cascade);
-        
-        
-        
-        
+
+        // TPH: todas as entidades derivadas de Content ficam na mesma tabela (PG_Content),
+        // diferenciadas pela coluna discriminadora "Type".
+        builder.HasDiscriminator<string>("Type")
+            .HasValue<Game>("Game");
+
+        builder.Property<string>("Type")
+            .HasMaxLength(32)
+            .IsRequired();
     }
 }

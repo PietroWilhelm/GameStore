@@ -1,5 +1,5 @@
 using GameStore.Application.Repositories;
-using GameStore.Domain.Commom;
+using GameStore.Domain.Common;
 using GameStore.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

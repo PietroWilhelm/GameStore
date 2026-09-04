@@ -1,13 +1,26 @@
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\bin\Debug\net10.0\GameStore.Domain.deps.json
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\bin\Debug\net10.0\GameStore.Domain.dll
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\bin\Debug\net10.0\GameStore.Domain.pdb
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.csproj.AssemblyReference.cache
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.AssemblyInfoInputs.cache
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.AssemblyInfo.cs
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.csproj.CoreCompileInputs.cache
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.sourcelink.json
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.dll
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\refint\GameStore.Domain.dll
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\GameStore.Domain.pdb
-E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Domain\obj\Debug\net10.0\ref\GameStore.Domain.dll
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.deps.json
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.dll
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.pdb
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.csproj.AssemblyReference.cache
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.AssemblyInfoInputs.cache
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.AssemblyInfo.cs
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.csproj.CoreCompileInputs.cache
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.sourcelink.json
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.dll
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/refint/GameStore.Domain.dll
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.pdb
+E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/ref/GameStore.Domain.dll
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.deps.json
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.dll
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/bin/Debug/net10.0/GameStore.Domain.pdb
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.csproj.AssemblyReference.cache
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.AssemblyInfoInputs.cache
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.AssemblyInfo.cs
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.csproj.CoreCompileInputs.cache
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.sourcelink.json
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.dll
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/refint/GameStore.Domain.dll
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/GameStore.Domain.pdb
+/home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Domain/obj/Debug/net10.0/ref/GameStore.Domain.dll

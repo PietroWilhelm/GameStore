@@ -1,4 +1,4 @@
-using GameStore.Domain.Commom;
+using GameStore.Domain.Common;
 
 namespace GameStore.Application.Repositories;
 

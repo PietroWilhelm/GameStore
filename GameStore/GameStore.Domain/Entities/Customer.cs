@@ -1,4 +1,4 @@
-﻿using GameStore.Domain.Commom;
+﻿using GameStore.Domain.Common;
 using GameStore.Domain.Helpers;
 
 namespace GameStore.Domain.Entities;

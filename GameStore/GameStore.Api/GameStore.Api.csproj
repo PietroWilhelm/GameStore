@@ -23,6 +23,7 @@
         <PackageReference Include="Oracle.EntityFrameworkCore" Version="10.23.26200" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
     </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\GameStore.Application\GameStore.Application.csproj" />
       <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj" />

@@ -8,15 +8,15 @@ public class GameConfiguration : IEntityTypeConfiguration<Game>
 {
     public void Configure(EntityTypeBuilder<Game> builder)
     {
-        builder.ToTable("PG_Games");
-        
+        // Sem ToTable: Game compartilha a tabela de Content (PG_Content) — mapeamento TPH.
+
         builder.Property(g => g.Name)
             .HasMaxLength(200)
             .IsRequired();
 
         builder.Property(g => g.Description)
             .HasMaxLength(1000);
-        
+
         builder.Property(g => g.LaunchDate)
             .IsRequired();
 
@@ -25,7 +25,7 @@ public class GameConfiguration : IEntityTypeConfiguration<Game>
             .WithMany(s => s.Games)
             .HasForeignKey(g => g.StudioId)
             .OnDelete(DeleteBehavior.Restrict);
-        
-        
+
+
     }
 }

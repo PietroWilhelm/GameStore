@@ -15,7 +15,7 @@ public class GameStoreContext : DbContext
 
     public DbSet<Genre> Genres { get; set; }
     
-    public DbSet<Customer> customers { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     
     public DbSet<Order> Orders { get; set; }
     

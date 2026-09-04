@@ -1,18 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using GameStore.Domain.Entities;
-using GameStore.Domain.Enum;
+using GameStore.Domain.Enums;
 
 namespace GameStore.Application.DTOs;
 
 /// <summary>
 /// DTO de requisição para criação de Games.
 /// </summary>
-/// <param name="Name">nome do jogo.</param>
+/// <param name="Name">Nome do jogo.</param>
 /// <param name="Description">Descrição do jogo.</param>
-/// <param name="launchDate">Data de lançamento.</param>
-/// <param name="contentTypeEnum">Tipo do conteúdo.</param>
-using System.ComponentModel.DataAnnotations;
-
+/// <param name="LaunchDate">Data de lançamento.</param>
+/// <param name="StudioId">Identificador do estúdio responsável.</param>
+/// <param name="ContentTypeEnum">Tipo do conteúdo.</param>
 public record GameRequest(
     [Required(ErrorMessage = "O nome do jogo é obrigatório")]
     [StringLength(200, MinimumLength = 2, ErrorMessage = "O nome do jogo deve ter entre 2 e 200 caracteres")]
@@ -34,10 +33,10 @@ public record GameRequest(
     ContentTypeEnum ContentTypeEnum
 ) : ContentRequest(Name, Description, LaunchDate)
 {
-    public Game toDomain() => new Game(
-       Name,
-       Description,
-       LaunchDate,
-       ContentTypeEnum,
-       StudioId);
+    public Game ToDomain() => new(
+        Name,
+        Description,
+        LaunchDate,
+        ContentTypeEnum,
+        StudioId);
 }

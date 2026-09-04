@@ -1,0 +1,29 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs e artefatos locais (não devem ser versionados)
+buildlog.txt
+*.log
+
+# Segredos locais - nunca versionar connection strings/senhas reais
+appsettings.*.local.json
+*.pfx
