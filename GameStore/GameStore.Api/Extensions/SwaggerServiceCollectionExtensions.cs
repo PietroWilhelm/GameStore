@@ -25,9 +25,15 @@ public static class SwaggerServiceCollectionExtensions
                 "Order"
             };
 
+            // Desde o CP5, api.GroupName deixou de ser null: o Asp.Versioning.Mvc.ApiExplorer
+            // preenche esse campo com o nome do grupo de versão ("v1"/"v2") em toda
+            // ApiDescription, para separar os SwaggerDocs (ver DocInclusionPredicate abaixo).
+            // Se ele fosse usado aqui como tag, todas as actions de um mesmo doc cairiam juntas
+            // sob uma única seção "V1"/"V2" em vez de uma seção por recurso — por isso a tag
+            // usa só o nome do controller, igual ao comportamento anterior ao CP5.
             options.TagActionsBy(api =>
             {
-                var tag = api.GroupName ?? api.ActionDescriptor.RouteValues["controller"] ?? "Other";
+                var tag = api.ActionDescriptor.RouteValues["controller"] ?? "Other";
                 return [tag];
             });
 
