@@ -32,3 +32,21 @@ E:/2TDSPG/Developement with .net/GameStore/GameStore/GameStore.Application/obj/D
 /home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Application/obj/Debug/net10.0/GameStore.Application.xml
 /home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Application/obj/Debug/net10.0/GameStore.Application.pdb
 /home/opentech-pietro/Faculdade/GameStore/GameStore/GameStore.Application/obj/Debug/net10.0/ref/GameStore.Application.dll
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Application.deps.json
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Application.dll
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Application.pdb
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Application.xml
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Domain.dll
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\bin\Debug\net10.0\GameStore.Domain.pdb
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.csproj.AssemblyReference.cache
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.AssemblyInfoInputs.cache
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.AssemblyInfo.cs
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.csproj.CoreCompileInputs.cache
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.sourcelink.json
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStor.34E1C27F.Up2Date
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.dll
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\refint\GameStore.Application.dll
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.xml
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\GameStore.Application.pdb
+E:\2TDSPG\Developement with .net\GameStore\GameStore\GameStore.Application\obj\Debug\net10.0\ref\GameStore.Application.dll

@@ -37,33 +37,56 @@
         <member name="T:GameStore.Controllers.GameController">
             <summary>
             Controller responsável pelas operações de Games na API.
+            Único recurso do CP5 com versionamento HTTP: a v1.0 (obsoleta) preserva a listagem antiga,
+            sem paginação, para não quebrar consumidores existentes; a v2.0 introduz a listagem paginada.
+            Ambas as versões compartilham o mesmo <see cref="T:GameStore.Application.Services.Interfaces.IGameService"/> — nenhuma regra de negócio
+            é duplicada entre elas. GetById, Create e Delete não têm <see cref="T:Asp.Versioning.MapToApiVersionAttribute"/>
+            e por isso respondem em qualquer uma das versões declaradas no controller.
             </summary>
         </member>
         <member name="M:GameStore.Controllers.GameController.#ctor(GameStore.Application.Services.Interfaces.IGameService,Microsoft.Extensions.Logging.ILogger{GameStore.Controllers.GameController})">
             <summary>
             Controller responsável pelas operações de Games na API.
+            Único recurso do CP5 com versionamento HTTP: a v1.0 (obsoleta) preserva a listagem antiga,
+            sem paginação, para não quebrar consumidores existentes; a v2.0 introduz a listagem paginada.
+            Ambas as versões compartilham o mesmo <see cref="T:GameStore.Application.Services.Interfaces.IGameService"/> — nenhuma regra de negócio
+            é duplicada entre elas. GetById, Create e Delete não têm <see cref="T:Asp.Versioning.MapToApiVersionAttribute"/>
+            e por isso respondem em qualquer uma das versões declaradas no controller.
             </summary>
         </member>
-        <member name="M:GameStore.Controllers.GameController.GetAll">
+        <member name="M:GameStore.Controllers.GameController.GetAllV1">
             <summary>
-            Lista todos os games cadastrados.
+            [v1.0 - obsoleta] Lista todos os games cadastrados, sem paginação.
+            Mantida apenas para compatibilidade com consumidores antigos; utilize a v2.0.
             </summary>
+        </member>
+        <member name="M:GameStore.Controllers.GameController.GetAllV2(System.Int32,System.Int32)">
+            <summary>
+            [v2.0] Lista os games cadastrados de forma paginada.
+            </summary>
+            <param name="page">Página solicitada (1-based, padrão 1).</param>
+            <param name="pageSize">Itens por página (entre 1 e 100, padrão 20).</param>
+            <remarks>
+            Página fora do intervalo existente retorna 200 com <c>items</c> vazio (nunca 404).
+            <paramref name="page"/> ou <paramref name="pageSize"/> inválidos retornam 400.
+            </remarks>
         </member>
         <member name="M:GameStore.Controllers.GameController.GetById(System.Guid)">
             <summary>
-            Busca um game pelo identificador único.
+            Busca um game pelo identificador único. Disponível em ambas as versões.
             </summary>
             <param name="id">Identificador único do game.</param>
         </member>
         <member name="M:GameStore.Controllers.GameController.Create(GameStore.Application.DTOs.GameRequest)">
             <summary>
-            Cria um novo game.
+            Cria um novo game. Disponível em ambas as versões.
+            Limitado a 10 requisições por minuto por IP (ver README, seção Rate Limiting).
             </summary>
             <param name="request">Dados do game a ser criado.</param>
         </member>
         <member name="M:GameStore.Controllers.GameController.Delete(System.Guid)">
             <summary>
-            Remove um game pelo identificador único.
+            Remove um game pelo identificador único. Disponível em ambas as versões.
             </summary>
             <param name="id">Identificador único do game.</param>
         </member>
@@ -172,6 +195,26 @@
             <summary>
             Converte qualquer exceção não tratada em uma resposta <c>application/problem+json</c> consistente,
             evitando <c>try/catch</c> espalhado pelos controllers.
+            </summary>
+        </member>
+        <member name="T:GameStore.API.Extensions.ConfigureSwaggerOptions">
+            <summary>
+            Cria um <c>SwaggerDoc</c> para cada versão de API descoberta pelo
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> (CP5: v1.0 obsoleta e v2.0 atual do GameController;
+            os demais recursos são [ApiVersionNeutral] e aparecem em todos os grupos automaticamente).
+            Registrado como <see cref="T:Microsoft.Extensions.Options.IConfigureOptions`1"/> para que o provider,
+            que depende do pipeline de versionamento, só seja resolvido depois que todos os serviços
+            tiverem sido registrados.
+            </summary>
+        </member>
+        <member name="M:GameStore.API.Extensions.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Cria um <c>SwaggerDoc</c> para cada versão de API descoberta pelo
+            <see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/> (CP5: v1.0 obsoleta e v2.0 atual do GameController;
+            os demais recursos são [ApiVersionNeutral] e aparecem em todos os grupos automaticamente).
+            Registrado como <see cref="T:Microsoft.Extensions.Options.IConfigureOptions`1"/> para que o provider,
+            que depende do pipeline de versionamento, só seja resolvido depois que todos os serviços
+            tiverem sido registrados.
             </summary>
         </member>
         <member name="M:GameStore.API.Extensions.GameStoreServiceCollectionExtensions.AddGameStoreRepositories(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
