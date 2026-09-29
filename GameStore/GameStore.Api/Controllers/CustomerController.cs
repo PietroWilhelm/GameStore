@@ -1,12 +1,15 @@
 using GameStore.Application.DTOs;
 using GameStore.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
 
 namespace GameStore.Controllers;
 
 /// <summary>
 /// Gerencia os clientes cadastrados na loja.
 /// </summary>
+// Recurso não versionado
+[ApiVersionNeutral]
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]

@@ -14,6 +14,9 @@ public sealed class GameService(
     IStudioRepository studioRepository,
     ILogger<GameService> logger) : IGameService
 {
+    private const int MinPageSize = 1;
+    private const int MaxPageSize = 100;
+
     /// <inheritdoc />
     public IReadOnlyList<GameResponse> GetAll()
     {
@@ -48,5 +51,21 @@ public sealed class GameService(
     public bool Delete(Guid id)
     {
         return gameRepository.Delete(id);
+    }
+
+    /// <inheritdoc />
+    public PagedResponse<GameResponse> GetPaged(int page, int pageSize)
+    {
+        if (page < 1)
+            throw new ArgumentException("O parâmetro 'page' deve ser maior ou igual a 1.", nameof(page));
+
+        if (pageSize < MinPageSize || pageSize > MaxPageSize)
+            throw new ArgumentException(
+                $"O parâmetro 'pageSize' deve estar entre {MinPageSize} e {MaxPageSize}.", nameof(pageSize));
+
+        var (items, totalItems) = gameRepository.GetPaged(page, pageSize);
+        var responses = items.Select(GameResponse.FromDomain).ToList();
+
+        return PagedResponse<GameResponse>.Create(responses, page, pageSize, totalItems);
     }
 }

@@ -1,5 +1,6 @@
 using System.Reflection;
-using Microsoft.OpenApi;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace GameStore.API.Extensions;
 
@@ -9,16 +10,12 @@ public static class SwaggerServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        // Um SwaggerDoc por versão de API é registrado por ConfigureSwaggerOptions, que depende
+        // de IApiVersionDescriptionProvider (adicionado por AddApiVersioning().AddApiExplorer()).
+        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
         services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = configuration.GetSection("Swagger:Title").Value ?? "GameStore API",
-                Version = configuration.GetSection("Swagger:Version").Value ?? "v1",
-                Description = configuration.GetSection("Swagger:Description").Value
-                              ?? "API para gerenciamento de catálogo de jogos."
-            });
-
             var order = new List<string>
             {
                 "Game",

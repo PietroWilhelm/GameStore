@@ -189,3 +189,162 @@ Além do material já existente (MER e prints do CP1–3), adicionar aqui, como 
 * Print ou trecho de `/health` com status `Unhealthy` (banco parado, ou connection string inválida local).
 * Trecho de log (console) de um `POST /api/game` mostrando o `TraceId`, e/ou de uma exceção tratada pelo `GlobalExceptionHandler`.
 * Saída de `dotnet test` (ou print do Test Explorer) com todos os testes passando.
+
+---
+
+# 🚦 CP5 — Versionamento de API, Paginação e Rate Limit
+
+Evolução do contrato HTTP de **Game** (recurso já entregue no CP3), sem quebrar quem ainda consome o contrato antigo, mais um limite de taxa em um endpoint de escrita. Nenhum outro recurso do CP1–CP4 foi removido: `DbContext`, migrations, controllers, DTOs, Swagger, `IRepository<T>`, `GlobalExceptionHandler`, `GET /health`, os logs com `TraceId` e os projetos `GameStore.Domain.Tests`/`GameStore.Application.Tests` continuam intactos.
+
+## Como subir a API
+
+Igual ao CP4 (nenhuma mudança no fluxo de build/migração):
+
+```bash
+dotnet restore GameStore.sln
+dotnet build GameStore.sln
+dotnet ef database update --project GameStore.Infrastructure --startup-project GameStore.Api
+dotnet run --project GameStore.Api
+```
+
+A partir daqui, `<host>` = `http://localhost:<porta>` (a porta exata está em `GameStore.Api/Properties/launchSettings.json`).
+
+## URLs relevantes
+
+| O que | URL |
+|---|---|
+| Swagger UI (ambiente Development) | `<host>/` |
+| Swagger JSON v1 (obsoleta) | `<host>/swagger/v1/swagger.json` |
+| Swagger JSON v2 (atual) | `<host>/swagger/v2/swagger.json` |
+| Health check | `<host>/health` |
+| Listagem de games — v1 (obsoleta, sem paginação) | `<host>/api/game` (com versão v1, ver abaixo) |
+| Listagem de games — v2 (paginada, padrão quando a versão não é informada) | `<host>/api/game` ou `<host>/api/v2/game` |
+
+## A) Versionamento de API
+
+Recurso escolhido: **Game** (`GameController`). Duas versões convivem lado a lado, compartilhando o mesmo `IGameService`/`GameService` — nenhuma regra de negócio é duplicada entre elas:
+
+* **v1.0** — marcada como obsoleta (`[ApiVersion("1.0", Deprecated = true)]`). `GET` de listagem mantém o contrato antigo: um array simples de games, sem paginação. Preservada apenas por compatibilidade.
+* **v2.0** — versão atual e **padrão** quando nenhuma versão é informada (`DefaultApiVersion = 2.0`, `AssumeDefaultVersionWhenUnspecified = true`). `GET` de listagem retorna o envelope paginado (seção B).
+
+`GetById`, `POST` (criação) e `DELETE` não têm atributo de versão específico — por isso respondem em **ambas** as versões, sem duplicação de código.
+
+Os outros quatro recursos (`Studio`, `Genre`, `Customer`, `Order`) são `[ApiVersionNeutral]`: continuam funcionando exatamente como antes e continuam aparecendo no Swagger de **cada** versão — versionar `Game` não os removeu do contrato nem da documentação.
+
+**Como especificar a versão** (qualquer uma das três formas funciona; se nenhuma for informada, a API assume v2.0):
+
+```bash
+# 1) Query string
+curl "<host>/api/game?api-version=1.0"
+curl "<host>/api/game?api-version=2.0"
+
+# 2) Header
+curl -H "X-Api-Version: 1.0" "<host>/api/game"
+curl -H "X-Api-Version: 2.0" "<host>/api/game"
+
+# 3) Segmento de URL (adição recomendada, não substitui as anteriores)
+curl "<host>/api/v1/game"
+curl "<host>/api/v2/game"
+```
+
+Toda resposta inclui os headers `api-supported-versions` e `api-deprecated-versions` (`ReportApiVersions = true`), permitindo a um cliente descobrir programaticamente que a v1.0 está obsoleta.
+
+O Swagger (`<host>/`) lista dois grupos de documentação — **v1** (com aviso de obsolescência na descrição) e **v2** — cada um mostrando os endpoints de `Game` daquela versão mais todos os recursos version-neutral.
+
+## B) Paginação (somente v2)
+
+A v1 de `GET /api/game` **não paginou** — segue devolvendo a lista completa, exatamente como no CP3/CP4 (sem quebra de contrato). Apenas a v2 pagina.
+
+**Parâmetros** (query string, em `GET <host>/api/v2/game` ou `GET <host>/api/game?api-version=2.0`):
+
+| Parâmetro | Default | Regra |
+|---|---|---|
+| `page` | `1` | Inteiro ≥ 1 |
+| `pageSize` | `20` | Inteiro entre 1 e 100 |
+
+* `page`/`pageSize` fora do intervalo permitido → `400 Bad Request` (`application/problem+json`, via `GlobalExceptionHandler`, que já mapeia `ArgumentException`).
+* `page` além do total de páginas existentes → `200 OK` com `items: []` (nunca `404`).
+
+**Envelope de resposta** (nomes de campo exatos):
+
+```json
+{
+  "page": 1,
+  "pageSize": 20,
+  "totalItems": 57,
+  "totalPages": 3,
+  "items": [ { "id": "...", "name": "..." } ],
+  "hasPrevious": false,
+  "hasNext": true
+}
+```
+
+`totalPages` = `ceiling(totalItems / pageSize)`. `hasPrevious`/`hasNext` são um extra sobre o contrato mínimo pedido.
+
+**Camadas envolvidas** (Clean Architecture, sem paginação em memória):
+
+* `GameController.GetAllV2` (Api) — só lê `page`/`pageSize` da query string.
+* `GameService.GetPaged` (Application) — valida o intervalo (lança `ArgumentException` se inválido) e monta o `PagedResponse<GameResponse>` (`GameStore.Application/DTOs/PagedResponse.cs`).
+* `Repository<T>.GetPaged` (Infrastructure, `GameStore.Infrastructure/Repositories/Repository.cs`) — `Count()` + `OrderBy(x => x.CreatedAt)` + `Skip` + `Take`, tudo avaliado como `IQueryable<T>` e traduzido para SQL pelo EF Core; o `ToList()` final já materializa só os itens da página. `GetById` nunca pagina.
+
+## C) Rate Limiting
+
+Middleware nativo `Microsoft.AspNetCore.RateLimiting` (nenhum pacote de terceiros). Nenhuma política é global — só os endpoints marcados com `[EnableRateLimiting(...)]` são afetados, e `GET /health` não tem esse atributo, portanto **nunca** passa por limite de taxa.
+
+| Política | Endpoint | Limite | Janela | Partição |
+|---|---|---|---|---|
+| `write-fixed` (obrigatória) | `POST /api/game` (criação) | 10 requisições | 1 minuto (fixed window) | por IP de origem |
+| `read-fixed` (extra) | `GET` v2 de `/api/game` (listagem paginada) | 60 requisições | 1 minuto (fixed window) | por IP de origem |
+
+Ao exceder o limite: `429 Too Many Requests`, com header `Retry-After` (em segundos) e corpo JSON (`application/problem+json`):
+
+```json
+{
+  "type": "about:blank",
+  "title": "Limite de requisições excedido",
+  "status": 429,
+  "detail": "Você excedeu o limite de requisições para este endpoint. Tente novamente em 60 segundo(s).",
+  "instance": "/api/game"
+}
+```
+
+**Como testar sem script** (Windows PowerShell — repetir manualmente ou colar 11+ vezes em poucos segundos):
+
+```powershell
+for ($i = 1; $i -le 11; $i++) {
+  curl.exe -s -o NUL -w "tentativa $i -> %{http_code}`n" -X POST "<host>/api/game" -H "Content-Type: application/json" -d "{\"name\":\"Teste $i\",\"description\":\"Descricao valida de teste\",\"launchDate\":\"2020-01-01\",\"studioId\":\"<guid-de-um-studio-existente>\",\"contentTypeEnum\":0}"
+}
+```
+
+A 11ª chamada dentro do mesmo minuto deve retornar `429`. Logo depois, `GET <host>/health` deve continuar respondendo `200` normalmente (prova de que o rate limit não afetou o health check).
+
+Middleware registrado em `Program.cs` entre `UseExceptionHandler()` e `MapControllers()` (`app.UseRateLimiter()`), conforme exigido.
+
+## Como rodar os testes
+
+Sem alteração no comando (a partir da pasta `GameStore`, onde está o `.sln`):
+
+```bash
+dotnet test GameStore.sln
+```
+
+Testes do CP4 continuam passando sem alteração. Novos testes do CP5 em `GameStore.Application.Tests/Services/Implementations/GameServiceTests.cs` (sem API nem banco):
+
+* `GetPaged_ComPageOuPageSizeInvalidos_DeveLancarArgumentException` — `[Theory]`/`[InlineData]` cobrindo `page`/`pageSize` fora do intervalo (`page <= 0`, `pageSize <= 0`, `pageSize > 100`); confirma `400` (via `ArgumentException`, mapeada pelo `GlobalExceptionHandler`) e que o repositório nunca é chamado.
+* `GetPaged_ComPageEPageSizeValidos_DeveRetornarEnvelopePaginadoComTotalPagesCorreto` — `[Fact]` cobrindo o caminho feliz: `totalPages`, `hasPrevious`/`hasNext` e delegação ao repositório com os parâmetros corretos.
+
+## Tabela de mapeamento de exceções
+
+Sem alterações desde o CP4 — ver a tabela na seção "🩺 CP4 — Health Checks, Observabilidade e Testes" acima. A validação de paginação reaproveita o mapeamento existente de `ArgumentException` → `400`.
+
+## 📁 `/docs` — evidências do CP5
+
+Além do que já existe do CP1–CP4, adicionar em `/docs`:
+
+* JSON da listagem v1 (`GET /api/game?api-version=1.0`) e da v2 (`GET /api/game?api-version=2.0`) do **mesmo recurso**, lado a lado.
+* Print/trecho dos headers de resposta mostrando `api-supported-versions` e `api-deprecated-versions`.
+* Print do Swagger (`<host>/`) mostrando os dois grupos de documentação (v1 com aviso de obsoleta, v2).
+* Print/trecho de um `400 Bad Request` com `page`/`pageSize` inválidos (ex.: `pageSize=0` ou `pageSize=500`).
+* Print/trecho comparando página 1 e página 2 da listagem v2 (mesmo `pageSize`, `items` diferentes, `totalItems`/`totalPages` coerentes).
+* Print/trecho de um `429 Too Many Requests` com o header `Retry-After`, seguido de um `GET /health` respondendo `200` imediatamente depois (prova de que `/health` não foi afetado).
+* Saída de `dotnet test` (ou print do Test Explorer) com todos os testes — CP4 + CP5 — passando.

@@ -1,12 +1,15 @@
 using GameStore.Application.DTOs;
 using GameStore.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
 
 namespace GameStore.Controllers;
 
 /// <summary>
 /// Gerencia os gêneros dos jogos disponíveis no catálogo.
 /// </summary>
+// Recurso não versionado
+[ApiVersionNeutral]
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]

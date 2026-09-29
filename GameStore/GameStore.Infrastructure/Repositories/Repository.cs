@@ -54,4 +54,25 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public bool ExistsById(Guid id)
         => DbSet.Any(x => x.Id == id);
+
+    /// <inheritdoc />
+    /// <remarks>
+    /// A ordenação por <c>CreatedAt</c> é obrigatória para que o Skip/Take produza páginas
+    /// estáveis e reprodutíveis. Count, OrderBy, Skip e Take são todos avaliados como
+    /// <see cref="IQueryable{T}"/> e traduzidos para SQL — o <c>ToList()</c> final é a única
+    /// materialização, já contendo apenas os itens da página solicitada.
+    /// </remarks>
+    public (IReadOnlyList<T> Items, int TotalItems) GetPaged(int page, int pageSize)
+    {
+        IQueryable<T> query = DbSet.AsNoTracking().OrderBy(x => x.CreatedAt);
+
+        var totalItems = query.Count();
+
+        var items = query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+        return (items, totalItems);
+    }
 }
