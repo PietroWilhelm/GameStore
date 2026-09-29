@@ -40,6 +40,24 @@ public static class SwaggerServiceCollectionExtensions
                     : $"{index:D2}_{controller}";
             });
 
+            // GameController expõe cada action em duas rotas (com e sem segmento de versão na
+            // URL) para que api-version por query string/header funcione em "api/game" e o
+            // segmento opcional funcione em "api/v{version}/game". Sem este filtro, o Swagger
+            // listaria cada operação duas vezes (ex.: GET /api/v1/game e GET /api/game lado a
+            // lado). Aqui só a rota sem segmento é documentada — a rota com segmento continua
+            // funcionando normalmente, só não aparece duplicada na documentação.
+            options.DocInclusionPredicate((docName, apiDesc) =>
+            {
+                var isUrlSegmentVersionedRoute = apiDesc.RelativePath is not null &&
+                    System.Text.RegularExpressions.Regex.IsMatch(
+                        apiDesc.RelativePath, @"^api/v\d", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                if (isUrlSegmentVersionedRoute)
+                    return false;
+
+                return apiDesc.GroupName is null || apiDesc.GroupName == docName;
+            });
+
             var xml = Path.Combine(
                 AppContext.BaseDirectory,
                 $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"

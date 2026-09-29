@@ -251,6 +251,8 @@ Toda resposta inclui os headers `api-supported-versions` e `api-deprecated-versi
 
 O Swagger (`<host>/`) lista dois grupos de documentação — **v1** (com aviso de obsolescência na descrição) e **v2** — cada um mostrando os endpoints de `Game` daquela versão mais todos os recursos version-neutral.
 
+Cada action de `Game` responde em duas rotas equivalentes (`api/game`, selecionada por query string/header, e `api/v{version}/game`, pelo segmento de URL) — para o Swagger não ficar com cada operação listada em dobro, só a rota sem segmento de versão é documentada (`DocInclusionPredicate` em `SwaggerServiceCollectionExtensions.cs`); a rota com segmento continua funcionando normalmente, só não aparece separadamente na documentação.
+
 ## B) Paginação (somente v2)
 
 A v1 de `GET /api/game` **não paginou** — segue devolvendo a lista completa, exatamente como no CP3/CP4 (sem quebra de contrato). Apenas a v2 pagina.
